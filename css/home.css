@@ -15,6 +15,33 @@ body{
     margin-top: 100px;
 }
 
-.carrosel{
-    width: 600px;
+
+.nav1{
+    height: 75px !important;
+}
+.carousel{
+    height: 600px;
+}
+
+#logo1{
+    height: 100px;
+    width: 500px;
+    margin-top: 60px;
+    margin-left: 23%;
+}
+
+#h2-1{
+    font-size: 40px;
+    text-align: center;
+}
+
+.topicos-qs{
+    color: #d81b60;
+}
+
+
+.img-qs{
+    width: 200px;
+    height: 200px;
+    margin-left: 100px;
 }
