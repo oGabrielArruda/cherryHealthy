@@ -1,84 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cadastro</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../css/singup.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="../js/singup.js"></script>
 </head>
+
 <body>
-    <div class="container">
-    <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+  <div class="container">
+    <h1> <img src="../imgs/logo3.png"> </h1>
+    <h2>Cadastre-se</h2>
+    <div id="cadst">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s5">
+              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">Primeiro Nome</label>
+            </div>
+            <div class="input-field col s5">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Último nome</label>
+            </div>
           </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Senha</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
+          <div class="row">
+            <div class="input-field col s6">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s4">
+              <input id="password" type="password" class="validate">
+              <label for="password">Senha</label>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Endereço</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos, nº 0">
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">Cidade</label>
-            <input type="text" class="form-control" id="inputCity">
+          <div class="row">
+            <div class="input-field col s2.5">
+              <select>
+                <option value="" disabled selected>Selecione seu estado</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value=BA>BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+              </select>
+              <label>Estado</label>
+            </div>
+            <div class="input-field col s5">
+              <input id="cidade" type="text" class="validate">
+              <label for="cidade">Cidade</label>
+            </div>
           </div>
-          <div class="form-group col-md-4">
-            <label for="inputEstado">Estado</label>
-            <select id="inputEstado" class="form-control">
-              <option selected>Escolher...</option>
-              <option>SP</option>
-              <option>RJ</option>
-              <option>ES</option>
-              <option>MG</option>
-              <option>RS</option>
-              <option>PR</option>
-              <option>SC</option>
-              <option>MT</option>
-              <option>MS</option>
-              <option>GO</option>
-              <option>DF</option>
-              <option>AM</option>
-              <option>PA</option>
-              <option>AC</option>
-              <option>RR</option>
-              <option>AP</option>
-              <option>RO</option>
-              <option>TO</option>
-              <option>SE</option>
-              <option>AL</option>
-              <option>PB</option>
-              <option>PE</option>
-              <option>MA</option>
-              <option>BA</option>
-              <option>PI</option>
-              <option>RN</option>
-              <option>CE</option>
-            </select>
+          <div class="row">
+            <div class="input-field col s3">
+              <input id="cpf" type="text" class="validate">
+              <label for="cpf">Cpf</label>
+            </div>
+            <div class="input-field col s4">
+              <i class="material-icons prefix">phone</i>
+              <input id="icon_telephone" type="tel" class="validate">
+              <label for="icon_telephone">Telefone</label>
+            </div>
           </div>
-          <div class="form-group col-md-2">
-            <label for="inputCEP">CEP</label>
-            <input type="text" class="form-control" id="inputCEP">
+          <div class="row">
+            <div class="input-field col s8">
+              <input id="codMedico" type="text" class="validate">
+              <label for="codMedico">Código do nutricionista</label>
+              <p>*este código deve ser fornecido por seu médico</p>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Clique em mim
-            </label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Entrar</button>
-      </form>
+        </form>
+      </div>
     </div>
+  </div>
 </body>
+
 </html>
