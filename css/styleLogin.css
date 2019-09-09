@@ -1,6 +1,6 @@
  #container{
         width: 40%;
-        height: 40%;
+        height: 40%;       
         margin: 0 auto;
       }
 
@@ -11,7 +11,6 @@
         body{
             background-color: white;
             margin-top: 5%;
-            background-color: #ffe6e6;
         }
 
        .bd-placeholder-img {
@@ -38,10 +37,10 @@
       .btn{
         width: 50%;
         margin-left: 25%;
-      }
+      } 
 
      input{
-         margin-bottom: 10px;
+         margin-bottom: 10px; 
      }
 
       #logo{
