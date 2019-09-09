@@ -3,6 +3,9 @@ body{
     width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 .tituloHome{
     text-align: center;

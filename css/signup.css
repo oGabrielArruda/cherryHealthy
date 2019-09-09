@@ -26,6 +26,10 @@
     color: #000;
   }
 
+html, body{
+  overflow: hidden;
+}
+
 
 h1{
     margin: 0 auto;
@@ -45,6 +49,20 @@ img{
 
  #cadst{
      margin-left: 10%;
-     padding: 70px;
+     padding: 40px;
  }
-       
+
+#proximo{
+  margin-left: 150px;
+  background-color: white;
+  color: rgb(38, 154, 166);
+  border: 1px solid rgb(38, 154, 166);
+}
+
+#proximo:hover{
+  background-color: rgb(38, 154, 166);
+  color: white;
+  -webkit-transition: background-color 250ms linear;
+  -ms-transition: background-color 250ms linear;
+  transition: background-color ms linear;
+}

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cadastro - CherryHealthy</title>
+  <title>Cadastro | CherryHealthy</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="../css/signup.css">
@@ -93,11 +93,24 @@
             </div>
           </div>
           <div class="row">
+            <div class="input-field col s3">
+              <input id="cpf" type="number" class="validate" min="30" max="500">
+              <label for="cpf">Peso</label>
+            </div>
+            <div class="input-field col s4">
+              <i class="material-icons prefix">altura</i>
+              <input id="altura" type="number" class="validate" min="1.00" max="2.50">
+              <label for="altura">Altura</label>
+            </div>
+          </div>
+          <div class="row">
             <div class="input-field col s8">
               <input id="codMedico" type="text" class="validate" placeholder="*este código deve ser fornecido por seu médico">
               <label for="codMedico">Código do nutricionista</label>              
             </div>
+            <a class="waves-effect waves-light btn-large" id="proximo">Registre-se</a>
           </div>
+          
         </form>
       </div>
     </div>
