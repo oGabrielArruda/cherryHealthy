@@ -5,26 +5,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cadastro</title>
+  <title>Cadastro - CherryHealthy</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="../css/singup.css">
+  <link rel="stylesheet" href="../css/signup.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="../js/singup.js"></script>
+  <script src="../js/signup.js"></script>
 </head>
 
 <body>
   <div class="container">
     <h1> <img src="../imgs/logo3.png"> </h1>
-    <h2>Cadastre-se</h2>
+    
     <div id="cadst">
       <div class="row">
         <form class="col s12">
           <div class="row">
             <div class="input-field col s5">
-              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <input id="first_name" type="text" class="validate">
               <label for="first_name">Primeiro Nome</label>
             </div>
             <div class="input-field col s5">
@@ -84,7 +84,7 @@
           <div class="row">
             <div class="input-field col s3">
               <input id="cpf" type="text" class="validate">
-              <label for="cpf">Cpf</label>
+              <label for="cpf">CPF</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">phone</i>
@@ -94,9 +94,8 @@
           </div>
           <div class="row">
             <div class="input-field col s8">
-              <input id="codMedico" type="text" class="validate">
-              <label for="codMedico">Código do nutricionista</label>
-              <p>*este código deve ser fornecido por seu médico</p>
+              <input id="codMedico" type="text" class="validate" placeholder="*este código deve ser fornecido por seu médico">
+              <label for="codMedico">Código do nutricionista</label>              
             </div>
           </div>
         </form>
