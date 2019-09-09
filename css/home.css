@@ -20,13 +20,19 @@ html {
 
 
 .nav1{
-    height: 75px !important;
+    height: 60px !important;
 }
 .carousel{
     height: 600px;
 }
 
-#logo1{
+#logo-nav{
+    margin-left: 15px;
+    height: 75%;
+    width: 75%;
+}
+
+#logo-body{
     height: 100px;
     width: 500px;
     margin-top: 60px;
