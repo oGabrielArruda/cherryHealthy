@@ -1,6 +1,8 @@
 body{
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -18,12 +20,35 @@ html {
     margin-top: 100px;
 }
 
-
-.nav1{
-    height: 60px !important;
+.container{
+    min-height: 100%;
+    position: relative;
+    width: 800px;
+    padding-bottom: 60px;
 }
+
+.nav{
+    height: 64px !important;
+    position: fixed !important;
+    width: 100%;
+    left: 0;
+    top: -60px;    
+    z-index: 701;
+    background: #fff;
+    opacity: .97;
+    filter: alpha(opacity = 97);
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
+}
+
 .carousel{
     height: 600px;
+    margin: 0 auto;
+}
+
+li{
+    height: 80%;
 }
 
 #logo-nav{
@@ -53,4 +78,11 @@ html {
     width: 200px;
     height: 200px;
     margin-left: 100px;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 100px;    
 }
