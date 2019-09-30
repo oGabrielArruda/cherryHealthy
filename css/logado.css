@@ -1,0 +1,23 @@
+.header{
+    background-image: url("../imgs/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;  
+    background-position: center;  
+    margin-bottom: 20px;
+    margin-top: 10px;    
+}
+
+#logout{
+    margin-top: 20px;
+    color: red;
+}
+
+#titulo{
+    padding-right: 100px;
+    font-size: 50px;
+}
+
+h1{
+    color:#f06292;
+    text-align: center;
+}
