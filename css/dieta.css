@@ -3,9 +3,13 @@
     margin-top: 7%;
 }
 
-h1{
-    color:#f06292;
-    text-align: center;
+container{
+    margin-left: 50px;
+}
+
+.input-field{
+    margin-top: 30px;
+    padding-right: 30px;
 }
 
 
