@@ -15,6 +15,7 @@
 #titulo{
     padding-right: 200px;
     font-size: 50px;
+    margin-bottom: 75px;
 }
 
 h1{
@@ -22,6 +23,13 @@ h1{
     text-align: center;
 }
 
-.container{
-    margin-left: 100px;
+.background{
+    background-color: rgb(238, 110, 115);
 }
+
+.container{
+    width: 100%;
+    float: right;    
+}
+
+

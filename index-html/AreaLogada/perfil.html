@@ -3,9 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> | CherryHealthy</title>
-   
+    <title>Perfil | CherryHealthy</title>
+  
     <link rel="stylesheet" type="text/css" href="../../css/logado.css">
+    <link rel="stylesheet" type="text/css" href="../../css/perfil.css">       
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -19,13 +20,28 @@
 
   <ul id="sidenav-1" class="sidenav sidenav-fixed">
       <li><a class="header"></a></li>
-      <li><a href="./perfil.html">Perfil</a></li>
+      <li><a href="#">Perfil</a></li>
       <li><a href="#">Avanços</a></li>
       <li><a href="./dieta.html">Dieta</a></li>
       <li><a href="#">Seu nutricionista</a></li>
       <li><a href="#" id="logout">Sair</a></li>
     </ul>  
     <div class="container">
+      <h1 id="titulo">Perfil</h1>
+      <div class="row">
+        <div class="input-field col s4">              
+          <input placeholder="" id="name" type="text" readonly="true">
+          <label for="name">Nome</label>
+        </div>
+        <div class="input-field col s4 scnd" >              
+          <input placeholder="" id="email" type="text" readonly="true">
+          <label for="email">Email</label>
+        </div>
+        <div class="input-field col s4" >              
+          <input placeholder="" id="telefone" type="text" readonly="true">
+          <label for="telefone">Telefone</label>
+        </div>
+      </div>
     
     </div>
 </body>

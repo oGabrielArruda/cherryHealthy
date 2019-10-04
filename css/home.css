@@ -52,16 +52,18 @@ li{
 }
 
 #logo-nav{
-    margin-left: 15px;
-    height: 75%;
-    width: 75%;
+    margin-top: 8px;
+    right: 0;
+    position: relative;
+    height: 35%;
+    width: 35%;
 }
 
 #logo-body{
     height: 100px;
     width: 500px;
     margin-top: 60px;
-    margin-left: 23%;
+    margin-left: 25%;
 }
 
 #h2-1{
