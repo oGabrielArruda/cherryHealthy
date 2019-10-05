@@ -30,12 +30,13 @@ html, body{
   overflow: hidden;
   margin: 0;
   padding: 0;
+  height: 100%;  
 }
 
 .container{
-  padding-bottom: 60px;
+  padding-bottom: 100px;
+  min-height: 100%;
 }
-
 
 h1{
     margin: 0 auto;
@@ -71,4 +72,11 @@ img{
   -webkit-transition: background-color 250ms linear;
   -ms-transition: background-color 250ms linear;
   transition: background-color ms linear;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
 }

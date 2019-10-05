@@ -6,11 +6,12 @@
     <title>Perfil | CherryHealthy</title>
   
     <link rel="stylesheet" type="text/css" href="../../css/logado.css">
-    <link rel="stylesheet" type="text/css" href="../../css/perfil.css">       
+    <link rel="stylesheet" type="text/css" href="../../css/perfil.css">      
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/body.js"></script>
+    <script type="text/javascript" src="../../js/perfil.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   
 </head>
@@ -33,16 +34,32 @@
           <input placeholder="" id="name" type="text" readonly="true">
           <label for="name">Nome</label>
         </div>
-        <div class="input-field col s4 scnd" >              
+        <div class="input-field col s4 scnd">                        
           <input placeholder="" id="email" type="text" readonly="true">
           <label for="email">Email</label>
         </div>
-        <div class="input-field col s4" >              
+      </div>      
+      <div class="row">
+        <div class="input-field col s4">              
           <input placeholder="" id="telefone" type="text" readonly="true">
           <label for="telefone">Telefone</label>
+        </div>                
+        <div class="input-field col s4 scnd">              
+            <input placeholder="" id="cpf" type="text" onkeydown="javascript: fMasc( this, mCPF);" maxlength="14" readonly="true">
+            <label for="cpf">CPF</label>
         </div>
       </div>
-    
+      <div class="row">
+        <div class="input-field col s4">              
+          <input placeholder="" id="altura" type="text" readonly="true">
+          <label for="altura">Altura</label>
+        </div>
+        <div class="input-field col s4 scnd">              
+          <input placeholder="" id="peso" type="text" readonly="true">
+          <label for="peso">Peso</label>
+        </div>
+      </div>
+      <a class="waves-effect waves-light btn-large">Editar dados</a>      
     </div>
 </body>
 </html>

@@ -1,4 +1,14 @@
-.scnd{
-	margin-left: 100px;
-	float: right;
+	margin-left: 75px;
+}
+
+.input-field.col{
+	margin-bottom: 60px;
+}
+
+label{
+	color: black !important;
+}
+
+input::placeholder{
+	color:	rgba(0, 0, 0, 0.6) !important;
 }
