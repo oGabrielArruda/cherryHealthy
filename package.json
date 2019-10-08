@@ -1,0 +1,22 @@
+{
+  "name": "cherryhealthy",
+  "version": "1.0.0",
+  "description": "Site para interação e supervisão de Nutricionistas e seus Pacientes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oGabrielArruda/cherryHealthy.git"
+  },
+  "author": "Gabriel Arruda e Felipe Pires",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oGabrielArruda/cherryHealthy/issues"
+  },
+  "homepage": "https://github.com/oGabrielArruda/cherryHealthy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
