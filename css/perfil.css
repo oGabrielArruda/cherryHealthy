@@ -28,7 +28,6 @@ input::placeholder{
   -moz-transition: opacity 400ms ease-in;
   transition: opacity 400ms ease-in;
   pointer-events: none;
-
 }
 
 .modalDialog:target{
@@ -41,7 +40,8 @@ input::placeholder{
   position: relative;
   margin: 17% auto;
   padding: 15px 20px;
-  background: #fff; 
+  background: #fff;
+  border-radius: 15px; 
 }
 
 .fechar {
@@ -59,16 +59,13 @@ input::placeholder{
 }
 
 .confirm{
-  position: absolute;
-  width: 30px;
-  right: -15px;
-  bottom: -15px;
+  width: 100% !important;
   text-align: center;
   line-height: 30px;
-  margin-top: 5px;    
-  font-size: 16px;
-  border-radius: 50%;
+  margin-top: 20px;    
+  font-size: 16px; 
   background: #2cf52c;
   color: #518749;
   border: none;
+  border-radius: 10px;
 }

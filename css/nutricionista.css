@@ -1,0 +1,15 @@
+.input-field.col{
+	margin-bottom: 60px;
+}
+
+.input-field.col.scnd{
+	margin-left: 75px !important;
+}
+
+label{
+	color: black !important;
+}
+
+input::placeholder{
+	color:	rgba(0, 0, 0, 0.6) !important;
+}
