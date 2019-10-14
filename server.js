@@ -1,3 +1,5 @@
+
+
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -31,24 +33,26 @@ function execSQL(sql, resposta) {
     .catch(erro => resposta.json(erro));
 }
 
+
 // ROTAS DE PAGINAS
+const rota = express.Router();
 
-app.get('/', function(req,res){
-    res.sendFile('home.html', {root: path.join(__dirname, './paginas')});
-});
+rota.get('/', (req,res) =>  res.sendFile('home.html', {root: path.join(__dirname, './paginas')}));
+app.use('/', rota);
 
-app.get('/login.html', function(req, res){
+
+rota.get('/login.html', function(req, res){
     res.sendFile('login.html', {root: path.join(__dirname, './paginas')});
 });
 
-app.get('/signup.html', function(req,res){
+rota.get('/signup.html', function(req,res){
     res.sendFile('signup.html', {root: path.join(__dirname, './paginas')});
 });
 
 
 
 // ROTAS NO BANCO DE DADOS
-app.post('/cadastro', function(req, res){
+rota.post('/cadastro', function(req, res){
     var nomeUm = req.body.nome_um;
     var nomeDois = req.body.nome_dois;
     var nomeComp = nomeUm + ' ' + nomeDois;
@@ -66,7 +70,21 @@ app.post('/cadastro', function(req, res){
     execSQL(`INSERT INTO Usuario(nome, cpf, email, telefone, senha, peso, altura, codNutricionista, Pontuação)
     VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, 0)`, res);
 
+    res.sendFile('login.html', {root: path.join(__dirname, './paginas')});
 });
+
+rota.post('/login', function(req, res){
+    var email = req.body.email;
+    var senha = req.body.senha;
+
+    execSQL("select * from Usuario where email = '"+ email+"' ", res);
+   // if(res.senha == senha)
+     //   res.sendFile('perfil.html', {root: path.join(__dirname, './paginas/AreaLogada')});
+});
+
+
+
+
 
 app.listen(3000, function(){
     console.log('executando');
