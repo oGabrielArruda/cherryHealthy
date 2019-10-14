@@ -21,56 +21,56 @@
     
     <div id="cadst">
       <div class="row">
-        <form class="col s12">
+        <form class="col s12" action="/cadastro" method="POST">
           <div class="row">
             <div class="input-field col s5">
-              <input id="first_name" type="text" class="validate">
+              <input id="primeiro" type="text" class="validate" name="nome_um">
               <label for="first_name">Primeiro Nome</label>
             </div>
             <div class="input-field col s5">
-              <input id="last_name" type="text" class="validate">
+              <input id="last_name" type="text" class="validate" name="nome_dois">
               <label for="last_name">Último nome</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="email" type="email" class="validate">
+              <input id="email" type="email" class="validate" name="email">
               <label for="email">Email</label>
             </div>
             <div class="input-field col s4">
-              <input id="password" type="password" class="validate">
+              <input id="password" type="password" class="validate" name="senha">
               <label for="password">Senha</label>
             </div>
           </div>
           
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="text" class="validate">
+              <input id="cpf" type="text" class="validate" name="cpf">
               <label for="cpf">CPF</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">phone</i>
-              <input id="icon_telephone" type="tel" class="validate">
+              <input id="icon_telephone" type="tel" class="validate" name="tel">
               <label for="icon_telephone">Telefone</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="number" class="validate" min="30" max="500">
+              <input id="cpf" type="number" class="validate" min="30" max="500" name="peso">
               <label for="cpf">Peso</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">altura</i>
-              <input id="altura" type="number" class="validate" min="1.00" max="2.50">
+              <input id="altura" type="number" class="validate" min="1.00" max="2.50" name="altura">
               <label for="altura">Altura</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s8">
-              <input id="codMedico" type="text" class="validate" placeholder="*este código deve ser fornecido por seu médico">
+              <input id="codMedico" type="text" class="validate" placeholder="*este código deve ser fornecido por seu médico" name="codNutri">
               <label for="codMedico">Código do nutricionista</label>              
             </div>
-            <a class="waves-effect waves-light btn-large" id="proximo">Registre-se</a>
+            <button class="waves-effect waves-light btn-large" id="proximo" type="submit">Registre-se</button>
           </div>                    
         </form>
       </div>
