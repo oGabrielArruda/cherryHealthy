@@ -1,5 +1,4 @@
 
-
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -35,24 +34,37 @@ function execSQL(sql, resposta) {
 
 
 // ROTAS DE PAGINAS
-const rota = express.Router();
 
-rota.get('/', (req,res) =>  res.sendFile('home.html', {root: path.join(__dirname, './paginas')}));
-app.use('/', rota);
+app.get('/', function(req,res) {
+    res.sendFile('home.html', {root: path.join(__dirname, './paginas')});
+});
 
-
-rota.get('/login.html', function(req, res){
+app.get('/login.html', function(req, res){
     res.sendFile('login.html', {root: path.join(__dirname, './paginas')});
 });
 
-rota.get('/signup.html', function(req,res){
+app.get('/signup.html', function(req,res){
     res.sendFile('signup.html', {root: path.join(__dirname, './paginas')});
 });
 
+app.get('/perfil.html', function(req,res){
+    res.sendFile("perfil.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+});
 
+app.get('/nutricionista.html', function(req,res){
+    res.sendFile("nutricionista.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+});
+
+app.get('/dieta.html', function(req, res){
+    res.sendFile("dieta.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+});
+
+app.get('/avancos.html', function(req, res){
+    res.sendFile("avancos.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+});
 
 // ROTAS NO BANCO DE DADOS
-rota.post('/cadastro', function(req, res){
+app.post('/cadastro', function(req, res){
     var nomeUm = req.body.nome_um;
     var nomeDois = req.body.nome_dois;
     var nomeComp = nomeUm + ' ' + nomeDois;
@@ -70,20 +82,18 @@ rota.post('/cadastro', function(req, res){
     execSQL(`INSERT INTO Usuario(nome, cpf, email, telefone, senha, peso, altura, codNutricionista, Pontuação)
     VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, 0)`, res);
 
-    res.sendFile('login.html', {root: path.join(__dirname, './paginas')});
+    res.redirect('/login.html');
 });
 
-rota.post('/login', function(req, res){
+app.post('/login', function(req, res){
     var email = req.body.email;
     var senha = req.body.senha;
-
     execSQL("select * from Usuario where email = '"+ email+"' ", res);
-   // if(res.senha == senha)
-     //   res.sendFile('perfil.html', {root: path.join(__dirname, './paginas/AreaLogada')});
+
+    //if(senha == res.body.senha)
+    //    res.redirect("/perfil.html");
+    // verificacao
 });
-
-
-
 
 
 app.listen(3000, function(){
