@@ -4,6 +4,8 @@ var path = require('path');
 var app = express();
 app.use(express.static('public'));
 
+
+var request = require('request');
 //--------------------------------------//
 
 
@@ -104,14 +106,21 @@ app.post('/cadastro', function(req, res){
     res.redirect('/login.html');
 });
 
-app.post('/login', function(req, res){
-    var email = req.body.email;
-    var senha = req.body.senha;
-    senha = criptografar(senha);
-
-    execSQL("select * from Usuario where email = '"+ email+"' ", res);
-
-
+app.post('/login', async function(req, res){
+	var email = req.body.email;
+	var senha = req.body.senha;
+	senha = criptografar(senha);
+	
+	var sqlQry1 = "select * from Usuario where email = '"+ email+"' ";
+	let resultados = await global.conexao.request().query(sqlQry1);
+	resultados.recordset.forEach(function(item) {
+		if(senha == item.senha){
+            res.redirect('/perfil.html');
+        }
+        else{
+            res.redirect('/login.html');
+        }	 
+	});	
 });
 
 
