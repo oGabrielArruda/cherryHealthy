@@ -45,24 +45,24 @@
           
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="text" class="validate" name="cpf">
+              <input id="cpf" type="text" class="validate" name="cpf" onkeydown="javascript: fMasc( this, mCPF);">
               <label for="cpf">CPF</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">phone</i>
-              <input id="icon_telephone" type="tel" class="validate" name="tel">
+              <input id="icon_telephone" type="tel" class="validate" name="tel" onkeydown="javascript: fMasc( this, mTel);">
               <label for="icon_telephone">Telefone</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s3">
               <input id="cpf" type="number" class="validate" min="30" max="500" name="peso">
-              <label for="cpf">Peso</label>
+              <label for="cpf">Peso (kg)</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">altura</i>
-              <input id="altura" type="number" class="validate" min="1.00" max="2.50" name="altura">
-              <label for="altura">Altura</label>
+              <input id="altura" type="number" class="validate" min="1.00" max="2.50" step="0.01" name="altura">
+              <label for="altura">Altura (metros)</label>
             </div>
           </div>
           <div class="row">
