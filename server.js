@@ -1,4 +1,3 @@
-
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -6,6 +5,11 @@ app.use(express.static('public'));
 
 
 var request = require('request');
+
+if (typeof localStorage === "undefined" || localStorage === null) {
+    var LocalStorage = require('node-localstorage').LocalStorage;
+    localStorage = new LocalStorage('./scratch');
+  }
 //--------------------------------------//
 
 
@@ -115,6 +119,7 @@ app.post('/login', async function(req, res){
 	let resultados = await global.conexao.request().query(sqlQry1);
 	resultados.recordset.forEach(function(item) {
 		if(senha == item.senha){
+            localStorage.setItem("codUsuario", item.codUsuario);
             res.redirect('/perfil.html');
         }
         else{

@@ -19,6 +19,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mssql": "^5.1.0"
+    "mssql": "^5.1.0",
+    "node-localstorage": "^1.3.1"
   }
 }
