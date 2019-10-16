@@ -113,10 +113,11 @@ app.post('/cadastro', function(req, res){
 app.post('/login', async function(req, res){
 	var email = req.body.email;
 	var senha = req.body.senha;
-	senha = criptografar(senha);
+    senha = criptografar(senha);
 	
 	var sqlQry1 = "select * from Usuario where email = '"+ email+"' ";
-	let resultados = await global.conexao.request().query(sqlQry1);
+    let resultados = await global.conexao.request().query(sqlQry1);
+
 	resultados.recordset.forEach(function(item) {
 		if(senha == item.senha){
             localStorage.setItem("codUsuario", item.codUsuario);
@@ -128,6 +129,33 @@ app.post('/login', async function(req, res){
 	});	
 });
 
+app.get('/dieta_seg', function(req,res){
+
+});
+
+app.get('/dieta_ter', function(req,res){
+    
+});
+
+app.get('/dieta_qua', function(req,res){
+    
+});
+
+app.get('/dieta_qui', function(req,res){
+    
+});
+
+app.get('/dieta_sex', function(req,res){
+    
+});
+
+app.get('/dieta_sab', function(req,res){
+    
+});
+
+app.get('/dieta_dom', function(req,res){
+    
+});
 
 app.listen(3000, function(){
     console.log('executando');
