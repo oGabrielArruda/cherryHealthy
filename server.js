@@ -88,6 +88,7 @@ app.get('/avancos.html', function(req, res){
     res.sendFile("avancos.html", {root: path.join(__dirname, './paginas/AreaLogada')});
 });
 
+
 // ROTAS NO BANCO DE DADOS
 app.post('/cadastro', function(req, res){
     var nomeUm = req.body.nome_um;
@@ -119,14 +120,21 @@ app.post('/login', async function(req, res){
     let resultados = await global.conexao.request().query(sqlQry1);
 
 	resultados.recordset.forEach(function(item) {
-		if(senha == item.senha){
-            localStorage.setItem("codUsuario", item.codUsuario);
+		if(senha == item.senha){            
             res.redirect('/perfil.html');
+            localStorage.setItem("codUsuario", item.codUsuario);
+            console.log(localStorage.getItem("codUsuario"));
         }
         else{
             res.redirect('/login.html');
         }	 
 	});	
+});
+
+
+app.get('/usuarioPerfil', (requisicao, resposta) => {
+	let	filtro = ' WHERE codUsuario=' + parseInt(localStorage.getItem("codUsuario"));
+	execSQL('SELECT * from Usuario' + filtro, resposta);
 });
 
 app.get('/dieta_seg', function(req,res){

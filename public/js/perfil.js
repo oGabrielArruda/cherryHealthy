@@ -1,3 +1,21 @@
+$(document).ready(function(){
+    start();
+});
+
+function start(){
+    var url = 'http://localhost:3000/usuarioPerfil/';
+    $.getJSON(url, function(result){
+        var arr = result;
+
+        $("#name").val(arr[0].nome);
+        $("#email").val(arr[0].email);
+        $("#telefone").val(arr[0].telefone);
+        $("#cpf").val(arr[0].cpf);
+        $("#altura").val(arr[0].altura);
+        $("#peso").val(arr[0].peso);
+    });
+}
+
 function fMasc(objeto,mascara) {
     obj=objeto
     masc=mascara
