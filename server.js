@@ -123,6 +123,8 @@ app.post('/login', async function(req, res){
 		if(senha == item.senha){            
             res.redirect('/perfil.html');
             localStorage.setItem("codUsuario", item.codUsuario);
+            localStorage.setItem("codNutri", item.codNutricionista);
+            console.log(localStorage.getItem("codNutri"))
         }
         else{
             res.redirect('/login.html');
@@ -139,6 +141,10 @@ app.get('/usuarioPerfil', (requisicao, resposta) => {
 app.get('/dieta', function(req,res){
     let filtro = ' WHERE codUsuario= ' + parseInt(localStorage.getItem("codUsuario"));
     execSQL('SELECT * from Dieta' + filtro, res);
+});
+
+app.get("/infoNutri", function(req,res){
+    execSQL('Select * from Nutricionista where codNutricionista= ' + parseInt(localStorage.getItem("codNutri")), res);
 });
 
 app.listen(3000, function(){
