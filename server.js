@@ -124,7 +124,6 @@ app.post('/login', async function(req, res){
             res.redirect('/perfil.html');
             localStorage.setItem("codUsuario", item.codUsuario);
             localStorage.setItem("codNutri", item.codNutricionista);
-            console.log(localStorage.getItem("codNutri"))
         }
         else{
             res.redirect('/login.html');
