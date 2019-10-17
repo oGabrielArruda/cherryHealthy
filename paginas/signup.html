@@ -24,11 +24,11 @@
         <form class="col s12" action="/cadastro" method="POST">
           <div class="row">
             <div class="input-field col s5">
-              <input id="primeiro" type="text" class="validate" name="nome_um">
+              <input id="primeiro" type="text" class="validate" name="nome_um" maxlength="15">
               <label for="first_name">Primeiro Nome</label>
             </div>
             <div class="input-field col s5">
-              <input id="last_name" type="text" class="validate" name="nome_dois">
+              <input id="last_name" type="text" class="validate" name="nome_dois" maxlength="15">
               <label for="last_name">Último nome</label>
             </div>
           </div>
@@ -45,12 +45,12 @@
           
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="text" class="validate" name="cpf" onkeydown="javascript: fMasc( this, mCPF);">
+              <input id="cpf" type="text" class="validate" name="cpf" onkeydown="javascript: fMasc( this, mCPF);" maxlength="14">
               <label for="cpf">CPF</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">phone</i>
-              <input id="icon_telephone" type="tel" class="validate" name="tel" onkeydown="javascript: fMasc( this, mTel);">
+              <input id="icon_telephone" type="tel" class="validate" name="tel" onkeydown="javascript: fMasc( this, mTel);" maxlength="13">
               <label for="icon_telephone">Telefone</label>
             </div>
           </div>
