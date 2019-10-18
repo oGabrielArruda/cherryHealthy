@@ -1,7 +1,13 @@
 .imc{
     padding: 15px;
     margin-left: 0px;
-    width: 600px;
     color: black;
     border-radius: 8px;
+}
+
+#exb{
+	float: right;
+	width: 50%;
+	margin-right: 35px;
+	margin-top: 10%;
 }
