@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dieta | CherryHealthy</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="../../css/dieta.css">
-    <link rel="stylesheet" type="text/css" href="../../css/body.css">
-    <link rel="stylesheet" type="text/css" href="../../css/logado.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script  type="text/javascript" src="../../js/dieta.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dieta | CherryHealthy</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="../../css/dieta.css">
+  <link rel="stylesheet" type="text/css" href="../../css/body.css">
+  <link rel="stylesheet" type="text/css" href="../../css/logado.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="../../js/dieta.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
+
 <body>
-    <nav> <!-- navbar content here  --> </nav>
-    
-      <ul id="sidenav-1" class="sidenav sidenav-fixed">
-          <li><a class="header"></a></li>
-          <li><a href="./perfil.html">Perfil</a></li>
-          <li><a href="./avancos.html">Avanços</a></li>
-          <li><a href="./dieta.html">Dieta</a></li>
-          <li><a href="./nutricionista.html">Seu nutricionista</a></li>
-          <li><a href="#" id="logout">Sair</a></li>
-        </ul>  
-    <div class="container">
- 
-      <h1 id="titulo">Dieta da semana</h1>
+  <nav>
+    <!-- navbar content here  -->
+  </nav>
+
+  <ul id="sidenav-1" class="sidenav sidenav-fixed">
+    <li><a class="header"></a></li>
+    <li><a href="./perfil.html">Perfil</a></li>
+    <li><a href="./avancos.html">Avanços</a></li>
+    <li><a href="./dieta.html">Dieta</a></li>
+    <li><a href="./nutricionista.html">Seu nutricionista</a></li>
+    <li><a href="#" id="logout">Sair</a></li>
+  </ul>
+  <div class="container">
+
+    <h1 id="titulo">Dieta da semana</h1>
     <div id="week">
-    <ul class="pagination">
+      <ul class="pagination">
         <li class="active dia"><a href="#">SEG</a></li>
         <li class="waves-effect dia"><a href="#">TER</a></li>
         <li class="waves-effect dia"><a href="#">QUA</a></li>
@@ -40,20 +44,21 @@
         <li class="waves-effect dia"><a href="#">SEX</a></li>
         <li class="waves-effect dia"><a href="#">SAB</a></li>
         <li class="waves-effect dia"><a href="#">DOM</a></li>
-    </ul>
-    <div id="txtArea">
-    <div class="row">
-            <form class="col s8">
-              <div class="row">
-                <div class="input-field col s12">
-                  <label>Dieta</label>
-                  <textarea readonly id="textarea1" class="materialize-textarea" placeholder=""></textarea>
-                </div>
+      </ul>
+      <div id="txtArea">
+        <div class="row">
+          <form class="col s8">
+            <div class="row">
+              <div class="input-field col s12">
+                <label>Dieta</label>
+                <textarea id="textarea1" class="materialize-textarea" placeholder=""></textarea>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
+      </div>
+    </div>
   </div>
-</div>
 </body>
+
 </html>

@@ -9,31 +9,31 @@ var request = require('request');
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = new LocalStorage('./scratch');
-  }
+}
 //--------------------------------------//
 
 
 const bodyParser = require('body-parser');
 const porta = 3000; // PORTA PADRAÕ
 const sql = require('mssql');
-const conexaoStr = "Server=regulus;Database=BD19170;User Id=BD19170;Password=BD19170;";
+const conexaoStr = "Server=regulus.cotuca.unicamp.br;Database=BD19170;User Id=BD19170;Password=BD19170;";
 
 const crypto = require('crypto');
 
 const DADOS_CRIPTOGRAFAR = {
-    algoritmo : "aes256",
-    codificacao : "utf8",
-    segredo : "chaves",
-    tipo : "hex"
+    algoritmo: "aes256",
+    codificacao: "utf8",
+    segredo: "chaves",
+    tipo: "hex"
 };
 
-function criptografar(senha){
+function criptografar(senha) {
     const cipher = crypto.createCipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
     cipher.update(senha);
     return cipher.final(DADOS_CRIPTOGRAFAR.tipo);
 }
 
-function descriptografar(senha){
+function descriptografar(senha) {
     const decipher = crypto.createDecipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
     decipher.update(senha, DADOS_CRIPTOGRAFAR.tipo);
     return decipher.final();
@@ -42,55 +42,55 @@ function descriptografar(senha){
 
 // conexao com BD
 sql.connect(conexaoStr)
-.then(conexao => global.conexao = conexao)
-.catch(erro => console.log(erro));
+    .then(conexao => global.conexao = conexao)
+    .catch(erro => console.log(erro));
 
 
 // configurando o body parser para pegar POSTS mais tarde
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 function execSQL(sql, resposta) {
     global.conexao.request()
-    .query(sql)
-    .then(resultado => resposta.json(resultado.recordset))
-    .catch(erro => resposta.json(erro));
+        .query(sql)
+        .then(resultado => resposta.json(resultado.recordset))
+        .catch(erro => resposta.json(erro));
 }
 
 
 // ROTAS DE PAGINAS
 
-app.get('/', function(req,res) {
-    res.sendFile('home.html', {root: path.join(__dirname, './paginas')});
+app.get('/', function (req, res) {
+    res.sendFile('home.html', { root: path.join(__dirname, './paginas') });
 });
 
-app.get('/login.html', function(req, res){
-    res.sendFile('login.html', {root: path.join(__dirname, './paginas')});
+app.get('/login.html', function (req, res) {
+    res.sendFile('login.html', { root: path.join(__dirname, './paginas') });
 });
 
-app.get('/signup.html', function(req,res){
-    res.sendFile('signup.html', {root: path.join(__dirname, './paginas')});
+app.get('/signup.html', function (req, res) {
+    res.sendFile('signup.html', { root: path.join(__dirname, './paginas') });
 });
 
-app.get('/perfil.html', function(req,res){
-    res.sendFile("perfil.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+app.get('/perfil.html', function (req, res) {
+    res.sendFile("perfil.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
-app.get('/nutricionista.html', function(req,res){
-    res.sendFile("nutricionista.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+app.get('/nutricionista.html', function (req, res) {
+    res.sendFile("nutricionista.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
-app.get('/dieta.html', function(req, res){
-    res.sendFile("dieta.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+app.get('/dieta.html', function (req, res) {
+    res.sendFile("dieta.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
-app.get('/avancos.html', function(req, res){
-    res.sendFile("avancos.html", {root: path.join(__dirname, './paginas/AreaLogada')});
+app.get('/avancos.html', function (req, res) {
+    res.sendFile("avancos.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 
 // ROTAS NO BANCO DE DADOS
-app.post('/cadastro', function(req, res){
+app.post('/cadastro', function (req, res) {
     var nomeUm = req.body.nome_um;
     var nomeDois = req.body.nome_dois;
     var nomeComp = nomeUm + ' ' + nomeDois;
@@ -111,42 +111,42 @@ app.post('/cadastro', function(req, res){
     res.redirect('/login.html');
 });
 
-app.post('/login', async function(req, res){
-	var email = req.body.email;
-	var senha = req.body.senha;
+app.post('/login', async function (req, res) {
+    var email = req.body.email;
+    var senha = req.body.senha;
     senha = criptografar(senha);
-	
-	var sqlQry1 = "select * from Usuario where email = '"+ email+"' ";
+
+    var sqlQry1 = "select * from Usuario where email = '" + email + "' ";
     let resultados = await global.conexao.request().query(sqlQry1);
 
-	resultados.recordset.forEach(function(item) {
-		if(senha == item.senha){            
+    resultados.recordset.forEach(function (item) {
+        if (senha == item.senha) {
             res.redirect('/perfil.html');
             localStorage.setItem("codUsuario", item.codUsuario);
             localStorage.setItem("codNutri", item.codNutricionista);
         }
-        else{
+        else {
             res.redirect('/login.html');
-        }	 
-	});	
+        }
+    });
 });
 
 
 app.get('/usuarioPerfil', (requisicao, resposta) => {
-	let	filtro = ' WHERE codUsuario=' + parseInt(localStorage.getItem("codUsuario"));
-	execSQL('SELECT * from Usuario' + filtro, resposta);
+    let filtro = ' WHERE codUsuario=' + parseInt(localStorage.getItem("codUsuario"));
+    execSQL('SELECT * from Usuario' + filtro, resposta);
 });
 
-app.get('/dieta', function(req,res){
+app.get('/dieta', function (req, res) {
     let filtro = ' WHERE codUsuario= ' + parseInt(localStorage.getItem("codUsuario"));
     execSQL('SELECT * from Dieta' + filtro, res);
 });
 
-app.get("/infoNutri", function(req,res){
+app.get("/infoNutri", function (req, res) {
     execSQL('Select * from Nutricionista where codNutricionista= ' + parseInt(localStorage.getItem("codNutri")), res);
 });
 
-app.listen(3000, function(){
+app.listen(3000, function () {
     console.log('executando');
 });
 
