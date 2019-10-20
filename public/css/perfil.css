@@ -69,3 +69,13 @@ input::placeholder{
   border: none;
   border-radius: 10px;
 }
+
+#welcome{
+  text-align: center;
+  margin-top: 300px;
+  margin-bottom: 350px;;
+}
+
+#infos{
+  padding-bottom: 80px;
+}
