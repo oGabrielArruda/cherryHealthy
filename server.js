@@ -153,6 +153,11 @@ app.get("/infoNutri", function (req, res) {
     execSQL('Select * from Nutricionista where codNutricionista= ' + parseInt(localStorage.getItem("codNutri")), res);
 });
 
+app.post("/alterarPeso", function(req, res){
+    execSQL('update Usuario set peso = ' + req.body.peso);
+    res.redirect('perfil.html');
+});
+
 app.listen(3000, function () {
     console.log('executando');
 });
