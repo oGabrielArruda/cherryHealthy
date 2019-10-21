@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Perfil | CherryHealthy</title>
 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../../css/logado.css">
   <link rel="stylesheet" type="text/css" href="../../css/perfil.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -32,48 +33,44 @@
   <div class="container">
     <div id="infos">
       <h1 id="titulo">Perfil</h1>
+      <form action="http://localhost:3000/alterarDados" method="post">
       <div class="row">
         <div class="input-field col s4">
-          <input placeholder="" id="name" type="text" readonly="true">
+          <input placeholder="" id="name" type="text" readonly="true" name="nome">
           <label for="name">Nome</label>
         </div>
         <div class="input-field col s4 scnd">
-          <input placeholder="" id="email" type="text" readonly="true">
+          <input placeholder="" id="email" type="text" readonly="true" name="email">
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s4">
-          <input placeholder="" id="telefone" type="text" readonly="true">
+          <input placeholder="" id="telefone" type="text" readonly="true" name="telefone">
           <label for="telefone">Telefone</label>
         </div>
         <div class="input-field col s4 scnd">
           <input placeholder="" id="cpf" type="text" onkeydown="javascript: fMasc( this, mCPF);" maxlength="14"
-            readonly="true">
+            readonly="true" name="cpf">
           <label for="cpf">CPF</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s4">
-          <input placeholder="" id="altura" type="text" readonly="true" maxlength="4">
+          <input placeholder="" id="altura" type="text" readonly="true" maxlength="4" name="altura">
           <label for="altura">Altura</label>
         </div>
         <div class="input-field col s4 scnd">
-          <input placeholder="" id="peso" type="text" readonly="true">
+          <input placeholder="" id="peso" type="text" readonly="true" name="peso">
           <label for="peso">Peso</label>
         </div>
       </div>
-      <a class="waves-effect waves-light btn-large" href="#abrirModal">Editar dados</a>
+      <a class="waves-effect waves-light btn-large btnEdit" href="#abrirModal">Editar dados</a>
+      <button class="btn waves-effect waves-light btnSave" type="submit" name="action">Salvar
+        <i class="material-icons right">send</i>
+        </button>
     </div>
-
-    <div class="modalDialog" id="abrirModal">
-      <div>
-        <a href="#fechar" title="Fechar" class="fechar">X</a>
-        <h5>Confirme a sua senha:</h5>
-        <input type="password" id="inputPassword" class="form-control" placeholder="" required>
-        <input type="submit" class="confirm" value="✓">
-      </div>
-    </div>
+  </form>
   </div>
 </body>
 

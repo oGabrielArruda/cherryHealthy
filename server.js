@@ -158,6 +158,15 @@ app.post("/alterarPeso", function(req, res){
     res.redirect('perfil.html');
 });
 
+app.post("/alterarDados", function(req,res){
+    execSQL("update Usuario set nome='" + req.body.nome +
+    "', cpf = '"+req.body.cpf+
+    "', email='"+ req.body.email + 
+     "', telefone='"+ req.body.telefone+
+     "', peso = "+ req.body.peso + 
+     ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")));
+});
+
 app.listen(3000, function () {
     console.log('executando');
 });

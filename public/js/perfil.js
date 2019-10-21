@@ -1,5 +1,16 @@
 $(document).ready(function () {
     start();
+    $(".btnSave").attr("disabled", true);
+
+    $(".btnEdit").click(function(){
+        $("#name").attr("readonly", false);
+        $("#email").attr("readonly", false);
+        $("#telefone").attr("readonly", false);
+        $("#cpf").attr("readonly", false);
+        $("#altura").attr("readonly", false);
+        $("#peso").attr("readonly", false);
+        $(".btnSave").attr("disabled", false);
+    });
 });
 
 function start() {
