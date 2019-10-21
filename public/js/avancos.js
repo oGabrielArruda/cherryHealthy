@@ -12,16 +12,17 @@ function valorIMC(){
     var imc;
     $.getJSON(url, function(result){
         var arr = result;
-        peso = parseInt(arr[0].peso);
-        altura = parseInt(arr[0].altura);
-
+        peso = parseFloat(arr[0].peso);
+        altura = parseFloat(arr[0].altura);
+ 
         var imc = peso / (altura*altura);
+        console.log(imc);
         var situacao;
-        if(peso < 15.5)
+        if(imc < 15.5)
             situacao = 'Muito abaixo do ideal';
-        if(peso < 18.5)
+        else if(imc < 18.5)
             situacao = "Abaixo do ideal";
-        if(imc < 24.9)
+        else if(imc < 24.9)
             situacao = 'Normal';
         else if(imc < 29.9)
             situacao = 'Levemente acima';

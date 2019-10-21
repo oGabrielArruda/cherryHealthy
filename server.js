@@ -154,7 +154,7 @@ app.get("/infoNutri", function (req, res) {
 });
 
 app.post("/alterarPeso", function(req, res){
-    execSQL('update Usuario set peso = ' + req.body.peso);
+    execSQL('update Usuario set peso = ' + req.body.peso + ' where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")));
     res.redirect('perfil.html');
 });
 
