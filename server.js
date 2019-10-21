@@ -154,7 +154,7 @@ app.get("/infoNutri", function (req, res) {
 });
 
 app.post("/alterarPeso", function(req, res){
-    execSQL('update Usuario set peso = ' + req.body.peso + ' where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")));
+    execSQL('update Usuario set peso = ' + req.body.peso + ' where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
     res.redirect('perfil.html');
 });
 
@@ -164,7 +164,9 @@ app.post("/alterarDados", function(req,res){
     "', email='"+ req.body.email + 
      "', telefone='"+ req.body.telefone+
      "', peso = "+ req.body.peso + 
-     ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")));
+     ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")), res);
+
+     res.redirect("perfil.html");
 });
 
 app.listen(3000, function () {
