@@ -5,8 +5,7 @@ $(document).ready(function () {
 function start() {
     var url = 'http://localhost:3000/usuarioPerfil/';
     $.getJSON(url, function (result) {
-        var arr = result;
-        $("#welcome").text("Bem-vindo " + arr[0].nome);
+        var arr = result;        
         $("#name").val(arr[0].nome);
         $("#email").val(arr[0].email);
         $("#telefone").val(arr[0].telefone);

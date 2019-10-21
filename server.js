@@ -72,6 +72,14 @@ app.get('/signup.html', function (req, res) {
     res.sendFile('signup.html', { root: path.join(__dirname, './paginas') });
 });
 
+app.get('/noticias.html', function (req, res){
+    res.sendFile("noticias.html", { root: path.join(__dirname, './paginas') });
+});
+
+app.get('/welcome.html', function (req, res){
+    res.sendFile("welcome.html", { root: path.join(__dirname, './paginas/AreaLogada') });
+});
+
 app.get('/perfil.html', function (req, res) {
     res.sendFile("perfil.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
@@ -87,7 +95,6 @@ app.get('/dieta.html', function (req, res) {
 app.get('/avancos.html', function (req, res) {
     res.sendFile("avancos.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
-
 
 // ROTAS NO BANCO DE DADOS
 app.post('/cadastro', function (req, res) {
@@ -121,7 +128,7 @@ app.post('/login', async function (req, res) {
 
     resultados.recordset.forEach(function (item) {
         if (senha == item.senha) {
-            res.redirect('/perfil.html');
+            res.redirect('/welcome.html');
             localStorage.setItem("codUsuario", item.codUsuario);
             localStorage.setItem("codNutri", item.codNutricionista);
         }
