@@ -11,3 +11,9 @@
 	margin-right: 35px;
 	margin-top: 10%;
 }
+
+#txtPeso{
+    width: 200px;
+    height: 100px;
+    font-size: 35px;
+}

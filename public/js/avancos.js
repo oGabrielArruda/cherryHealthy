@@ -2,6 +2,7 @@ var url = "http://localhost:3000/usuarioPerfil/"
 
 $(document).ready(function(){
     valorIMC();
+    peso();
 });
 
 
@@ -40,6 +41,13 @@ function valorIMC(){
             cor = "#2ef21f";
 
         exibirSituacao(situacao, cor);
+    });
+}
+
+function peso(){
+    $.getJSON(url, function(result){
+        var arr = result;
+        $("#txtPeso").val(arr[0].peso);
     });
 }
 
