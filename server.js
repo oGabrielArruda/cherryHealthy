@@ -61,6 +61,9 @@ function execSQL(sql, resposta) {
 // ROTAS DE PAGINAS
 
 app.get('/', function (req, res) {
+    if (localStorage.getItem('codUsuario') && localStorage.getItem('codNutri'))
+        res.redirect('/welcome.html');
+
     res.sendFile('home.html', { root: path.join(__dirname, './paginas') });
 });
 
@@ -97,10 +100,12 @@ app.get('/avancos.html', function (req, res) {
 });
 
 app.get('/logout', function (req, res) {	
-	localStorage.clear();
-	req.logout();
-    res.sendFile('home.html', { root: path.join(__dirname, './paginas') });
-	
+    //localStorage.clear();
+    //req.logout();
+    localStorage.removeItem('codUsuario');
+    localStorage.removeItem('codNutri');
+    
+    res.sendFile('home.html', { root: path.join(__dirname, './paginas') });	
 });
 
 
