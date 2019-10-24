@@ -96,6 +96,14 @@ app.get('/avancos.html', function (req, res) {
     res.sendFile("avancos.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
+app.get('/logout', function (req, res) {	
+	localStorage.clear();
+	req.logout();
+    res.sendFile('home.html', { root: path.join(__dirname, './paginas') });
+	
+});
+
+
 // ROTAS NO BANCO DE DADOS
 app.post('/cadastro', function (req, res) {
     var nomeUm = req.body.nome_um;
