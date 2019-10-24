@@ -72,11 +72,11 @@ app.get('/signup.html', function (req, res) {
     res.sendFile('signup.html', { root: path.join(__dirname, './paginas') });
 });
 
-app.get('/noticias.html', function (req, res){
+app.get('/noticias.html', function (req, res) {
     res.sendFile("noticias.html", { root: path.join(__dirname, './paginas') });
 });
 
-app.get('/welcome.html', function (req, res){
+app.get('/welcome.html', function (req, res) {
     res.sendFile("welcome.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
@@ -125,7 +125,6 @@ app.post('/login', async function (req, res) {
 
     var sqlQry1 = "select * from Usuario where email = '" + email + "' ";
     let resultados = await global.conexao.request().query(sqlQry1);
-
     resultados.recordset.forEach(function (item) {
         if (senha == item.senha) {
             res.redirect('/welcome.html');
@@ -153,20 +152,20 @@ app.get("/infoNutri", function (req, res) {
     execSQL('Select * from Nutricionista where codNutricionista= ' + parseInt(localStorage.getItem("codNutri")), res);
 });
 
-app.post("/alterarPeso", function(req, res){
+app.post("/alterarPeso", function (req, res) {
     execSQL('update Usuario set peso = ' + req.body.peso + ' where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
     res.redirect('perfil.html');
 });
 
-app.post("/alterarDados", function(req,res){
+app.post("/alterarDados", function (req, res) {
     execSQL("update Usuario set nome='" + req.body.nome +
-    "', cpf = '"+req.body.cpf+
-    "', email='"+ req.body.email + 
-     "', telefone='"+ req.body.telefone+
-     "', peso = "+ req.body.peso + 
-     ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")), res);
+        "', cpf = '" + req.body.cpf +
+        "', email='" + req.body.email +
+        "', telefone='" + req.body.telefone +
+        "', peso = " + req.body.peso +
+        ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")), res);
 
-     res.redirect("perfil.html");
+    res.redirect("perfil.html");
 });
 
 app.listen(3000, function () {
