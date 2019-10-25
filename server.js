@@ -80,32 +80,39 @@ app.get('/noticias.html', function (req, res) {
 });
 
 app.get('/welcome.html', function (req, res) {
+    if(!logado())
+        res.redirect("/login.html");
     res.sendFile("welcome.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 app.get('/perfil.html', function (req, res) {
+    if(!logado())
+        res.redirect("/login.html");
     res.sendFile("perfil.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 app.get('/nutricionista.html', function (req, res) {
+    if(!logado())
+        res.redirect("/login.html");
     res.sendFile("nutricionista.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 app.get('/dieta.html', function (req, res) {
+    if(!logado())
+        res.redirect("/login.html");
     res.sendFile("dieta.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 app.get('/avancos.html', function (req, res) {
+    if(!logado())
+        res.redirect("/login.html");
     res.sendFile("avancos.html", { root: path.join(__dirname, './paginas/AreaLogada') });
 });
 
 app.get('/logout', function (req, res) {	
-    //localStorage.clear();
-    //req.logout();
     localStorage.removeItem('codUsuario');
     localStorage.removeItem('codNutri');
-    
-    res.sendFile('home.html', { root: path.join(__dirname, './paginas') });	
+    res.redirect("/");
 });
 
 
@@ -180,6 +187,12 @@ app.post("/alterarDados", function (req, res) {
 
     res.redirect("perfil.html");
 });
+
+function logado(){
+    if(localStorage.getItem("codUsuario") == null || localStorage.getItem("codNutri") == null)
+        return false;
+    return true;
+}
 
 app.listen(3000, function () {
     console.log('executando');
