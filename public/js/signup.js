@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('select').formSelect();
+    $('select').formSelect();    
 });
 
 function fMasc(objeto,mascara) {
@@ -7,6 +7,7 @@ function fMasc(objeto,mascara) {
     masc=mascara
     setTimeout("fMascEx()",1)
 }
+
 function fMascEx() {
     obj.value=masc(obj.value)
 }

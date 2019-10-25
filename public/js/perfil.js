@@ -21,8 +21,12 @@ function start() {
         $("#email").val(arr[0].email);
         $("#telefone").val(arr[0].telefone);
         $("#cpf").val(arr[0].cpf);
-        $("#altura").val(arr[0].altura);
         $("#peso").val(arr[0].peso);
+
+        var altura = Math.round(arr[0].altura*100)/100;
+        $("#altura").val(altura);
+
+        
     });
 }
 
