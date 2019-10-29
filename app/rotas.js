@@ -37,9 +37,6 @@ module.exports = (app) =>{
     
     // Páginas sem estar logado   
     app.get('/', function (req, res) {
-        if (localStorage.getItem('codUsuario') && localStorage.getItem('codNutri'))
-            res.redirect('/welcome.html');
-    
         res.sendFile('home.html', { root: path.join(__dirname, '../paginas') });
     });
     
