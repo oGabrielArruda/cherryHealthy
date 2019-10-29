@@ -3,6 +3,7 @@ var url = "http://localhost:3000/usuarioPerfil/"
 $(document).ready(function(){
     valorIMC();
     peso();
+    pontuacao();
 });
 
 
@@ -60,4 +61,11 @@ function exibirSituacao(situacao, cor){
     + ',' + parseInt(cor.slice(-2),16)
     +',0.5)';
     $('.imc').css('background-color', rgbaCol)
+}
+
+function pontuacao(){
+    $.getJSON(url, function(result){
+        var arr = result;
+        $("#txtPonts").val(arr[0].Pontuação);
+    });
 }
