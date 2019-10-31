@@ -6,13 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cadastro | CherryHealthy</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">  
   <link rel="stylesheet" href="../css/signup.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="../js/signup.js"></script>
+  <script src="../js/signup.js"></script>   
+  <script type="text/javascript" src="js/popper.min.js"></script>  
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>  
+  <script type="text/javascript" src="js/mdb.min.js"></script>
 </head>
 
 <body>
@@ -21,53 +24,53 @@
     
     <div id="cadst">
       <div class="row">
-        <form class="col s12" action="/cadastro" method="POST">
+        <form action="/cadastro" method="POST">
           <div class="row">
             <div class="input-field col s5">
-              <input id="primeiro" type="text" class="validate" name="nome_um" maxlength="15">
+              <input id="primeiro" type="text" class="form-control" name="nome_um" maxlength="15" required>
               <label for="first_name">Primeiro Nome</label>
             </div>
             <div class="input-field col s5">
-              <input id="last_name" type="text" class="validate" name="nome_dois" maxlength="15">
+              <input id="last_name" type="text" class="form-control" name="nome_dois" maxlength="15" required>
               <label for="last_name">Último nome</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s6">
-              <input id="email" type="email" class="validate" name="email">
+              <input id="email" type="email" class="form-control" name="email" required>
               <label for="email">Email</label>
             </div>
             <div class="input-field col s4">
-              <input id="password" type="password" class="validate" name="senha">
+              <input id="password" type="password" class="form-control" name="senha" required>
               <label for="password">Senha</label>
             </div>
           </div>
           
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="text" class="validate" name="cpf" onkeydown="javascript: fMasc( this, mCPF);" maxlength="14">
+              <input id="cpf" type="text" class="form-control" name="cpf" onkeydown="javascript: fMasc( this, mCPF);" maxlength="14" required>
               <label for="cpf">CPF</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">phone</i>
-              <input id="icon_telephone" type="tel" class="validate" name="tel" onkeydown="javascript: fMasc( this, mTel);" maxlength="13">
+              <input id="icon_telephone" type="tel" class="form-control" name="tel" onkeydown="javascript: fMasc( this, mTel);" maxlength="13" required>
               <label for="icon_telephone">Telefone</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s3">
-              <input id="cpf" type="number" class="validate" min="30" max="500" name="peso">
+              <input id="cpf" type="number" class="form-control" min="30" max="500" name="peso" required>
               <label for="cpf">Peso (kg)</label>
             </div>
             <div class="input-field col s4">
               <i class="material-icons prefix">altura</i>
-              <input id="altura" type="number" class="validate" min="1" max="2.50" step="0.01" name="altura">
+              <input id="altura" type="number" class="form-control" min="1" max="2.50" step="0.01" name="altura" required>
               <label for="altura">Altura (metros)</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s8">
-              <input id="codMedico" type="text" class="validate" placeholder="*este código deve ser fornecido por seu médico" name="codNutri">
+              <input id="codMedico" type="text" class="form-control" placeholder="*este código deve ser fornecido por seu médico" name="codNutri" required>
               <label for="codMedico">Código do nutricionista</label>              
             </div>
             <button class="waves-effect waves-light btn-large" id="proximo" type="submit">Registre-se</button>
