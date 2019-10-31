@@ -11,4 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   $(document).ready(function(){
     $('.sidenav').sidenav();
-  })
+    if(!!window.performance && window.performance.navigation.type === 2)
+    {
+      console.log('Reloading');
+      window.location.reload();
+    }
+  });
+
+
+
