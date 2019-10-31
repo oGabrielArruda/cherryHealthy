@@ -35,7 +35,30 @@ class UsuarioDao{
             }
         });
     }
-    
+
+    alterar(codigo, usuario, callback){
+        var nome = usuario.nome;
+        var cpf = usuario.cpf;
+        var email = usuario.email;
+        var telefone = usuario.telefone;
+        var peso = usuario.peso;
+        var altura = usuario.altura;
+
+        this._db.query("update Usuario set nome='" + nome +
+        "', cpf = '" + cpf +
+        "', email ='" + email +
+        "', telefone = '" + telefone +
+        "', peso = " + peso +
+        ", altura = " + altura +
+        " where codUsuario = " + codigo, (err)=>{
+            if(err)
+            {
+                console.log("Erro ao alterar usuário");
+                callback(err);
+            }
+        });
+       
+    }
 }
 
 

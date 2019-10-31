@@ -166,14 +166,17 @@ module.exports = (app) => {
     });
 
     app.post("/alterarDados", function (req, res) {
-        execSQL("update Usuario set nome='" + req.body.nome +
-            "', cpf = '" + req.body.cpf +
-            "', email='" + req.body.email +
-            "', telefone='" + req.body.telefone +
-            "', peso = " + req.body.peso +
-            ", altura = " + req.body.altura + " where codUsuario = " + parseInt(localStorage.getItem("codUsuario")), res);
+        const usuarioDao = new UsuarioDao(conexao);
+        var err = false;
 
-        res.redirect("perfil.html");
+        usuarioDao.alterar(parseInt(localStorage.getItem("codUsuario")), req.body, function(erro){
+            if(erro){
+                err = true;
+            }
+        });
+
+        if(!err)
+            res.redirect("perfil.html");
     });
 
     function logado() {
