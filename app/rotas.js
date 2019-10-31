@@ -1,3 +1,5 @@
+var conexao = require('../config/custom-mssql');
+
 module.exports = (app) => {
 
     if (typeof localStorage === "undefined" || localStorage === null) {
