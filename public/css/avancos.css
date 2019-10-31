@@ -12,13 +12,22 @@
 	margin-top: 10%;
 }
 
-#txtPeso{
-    width: 150px;
+.txtInfo{
+    width: 250px !important;
     height: 80px;
-    font-size: 25px;
+    font-size: 25px;   
 }
 
-.formPeso{
+#formInfo{
     font-weight: 20px !important;
-    margin: auto;    
+    margin: auto;
+    height: 100%;
+    width: 100% !important; 
+    text-align: center;  
 }
+
+#infPeso, #infPont{
+    display: inline-block;
+    margin-left: 100px;
+}
+

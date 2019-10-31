@@ -37,17 +37,21 @@
           </h1>
         </div>
 
-        <div class="formPeso">
+        <div class="formInfo">
           <form action="http://localhost:3000/alterarPeso" method="post">
+          <div id="infPeso">
           <h3 id="peso"> Seu peso é: </h3> 
-          <input type="text" id="txtPeso" name="peso">
+          <input type="text" class="txtInfo" name="peso" id="txtPeso">
           <button class="btn waves-effect waves-light" type="submit" name="action">Alterar
           <i class="material-icons right">send</i>
           </button>
-
+      	  </div>
+      	
+		<div id="infPont">
           <h3 id="pontuacao"> Sua pontuação é: </h3>
-          <input type="text" readonly id="txtPonts">
+          <input type="text" readonly id="txtPonts" class="txtInfo">
         </form>
+    	</div>
       </div>
 
     </div>
