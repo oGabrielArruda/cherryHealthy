@@ -106,9 +106,11 @@ module.exports = (app) => {
         var altura = req.body.altura;
         var codNutri = req.body.codNutri;
 
- 
+        var pontuacao = peso / (altura*altura) - 21.7;
+        pontuacao = Math.round(pontuacao);
+        
         execSQL(`INSERT INTO Usuario(nome, cpf, email, telefone, senha, peso, altura, codNutricionista, Pontuação)
-        VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, 0)`, res);
+        VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, ${pontuacao})`, res);
 
         res.redirect('/login.html');
     });
@@ -166,9 +168,6 @@ module.exports = (app) => {
         var difImcNovo = req.body.peso / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc novo e o ideal
         if(difImcNovo < 0)
             difImcNovo = -difImcNovo; 
-
-            console.log(difImcNovo);
-            console.log(difImcAntigo);
         if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
             pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
         else
