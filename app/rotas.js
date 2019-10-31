@@ -106,6 +106,7 @@ module.exports = (app) => {
         var altura = req.body.altura;
         var codNutri = req.body.codNutri;
 
+ 
         execSQL(`INSERT INTO Usuario(nome, cpf, email, telefone, senha, peso, altura, codNutricionista, Pontuação)
         VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, 0)`, res);
 
@@ -147,17 +148,31 @@ module.exports = (app) => {
     });
 
     app.post("/alterarPeso", async function (req, res) {
-        var pesoAntigo, pontuacao;
+        var pesoAntigo, altura, pontuacao;
 
-        var sqlQry = "select Pontuação, peso from Usuario where codUsuario = " + parseInt(localStorage.getItem("codUsuario"));
+        var sqlQry = "select Pontuação, peso, altura from Usuario where codUsuario = " + parseInt(localStorage.getItem("codUsuario"));
         let resultados = await global.conexao.request().query(sqlQry);
         resultados.recordset.forEach(function (item) {
             pesoAntigo = item.peso;
+            altura = item.altura;
             pontuacao = item.Pontuação;
         });
 
-        pontuacao += (pesoAntigo - req.body.peso) * 5; // definir regra de pontuacao
+        var difImcAntigo = pesoAntigo / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc antigo e o ideal
+        if(difImcAntigo < 0)
+            difImcAntigo = -difImcAntigo;
+        
 
+        var difImcNovo = req.body.peso / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc novo e o ideal
+        if(difImcNovo < 0)
+            difImcNovo = -difImcNovo; 
+
+            console.log(difImcNovo);
+            console.log(difImcAntigo);
+        if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
+            pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
+        else
+            pontuacao -= Math.round(difImcNovo*10); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
 
         execSQL('update Usuario set peso = ' + req.body.peso + ', Pontuação =' + pontuacao + 'where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
         res.redirect('avancos.html');
