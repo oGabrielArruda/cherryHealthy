@@ -1,3 +1,4 @@
+var UsuarioDao = require('../app/usuario-dao');
 var conexao = require('../config/custom-mssql');
 
 module.exports = (app) => {
@@ -6,28 +7,7 @@ module.exports = (app) => {
         var LocalStorage = require('node-localstorage').LocalStorage;
         localStorage = new LocalStorage('./scratch');
     }
-
-    const crypto = require('crypto');
     var path = require('path');
-
-    const DADOS_CRIPTOGRAFAR = {
-        algoritmo: "aes256",
-        codificacao: "utf8",
-        segredo: "chaves",
-        tipo: "hex"
-    };
-
-    function criptografar(senha) {
-        const cipher = crypto.createCipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
-        cipher.update(senha);
-        return cipher.final(DADOS_CRIPTOGRAFAR.tipo);
-    }
-
-    function descriptografar(senha) {
-        const decipher = crypto.createDecipher(DADOS_CRIPTOGRAFAR.algoritmo, DADOS_CRIPTOGRAFAR.segredo);
-        decipher.update(senha, DADOS_CRIPTOGRAFAR.tipo);
-        return decipher.final();
-    }
 
     function execSQL(sql, resposta) {
         global.conexao.request()
@@ -94,27 +74,17 @@ module.exports = (app) => {
 
     // ROTAS NO BANCO DE DADOS
     app.post('/cadastro', function (req, res) {
-        var nomeUm = req.body.nome_um;
-        var nomeDois = req.body.nome_dois;
-        var nomeComp = nomeUm + ' ' + nomeDois;
-        var cpf = req.body.cpf;
-        var email = req.body.email;
-        var tel = req.body.tel;
-
-        var senha = req.body.senha;
-        senha = criptografar(senha);
-
-        var peso = req.body.peso;
-        var altura = req.body.altura;
-        var codNutri = req.body.codNutri;
-
-        var pontuacao = peso / (altura*altura) - 21.7;
-        pontuacao = Math.round(pontuacao);
-        
-        execSQL(`INSERT INTO Usuario(nome, cpf, email, telefone, senha, peso, altura, codNutricionista, Pontuação)
-        VALUES('${nomeComp}','${cpf}','${email}','${tel}', '${senha}', ${peso}, ${altura}, ${codNutri}, ${pontuacao})`, res);
-
-        res.redirect('/login.html');
+        const usuarioDao = new UsuarioDao(conexao);
+        var err = false;        
+        usuarioDao.adiciona(req.body, function(erro){
+            if(erro)
+            {
+                console.log("Erro na inclusão");
+                err = true;
+            }
+        });
+        if(!err)
+            res.redirect('/login.html');
     });
 
     app.post('/login', async function (req, res) {
