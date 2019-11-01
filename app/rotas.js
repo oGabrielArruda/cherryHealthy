@@ -142,24 +142,28 @@ module.exports = (app) => {
 
         var sqlQry = "select Pontuação, peso, altura from Usuario where codUsuario = " + parseInt(localStorage.getItem("codUsuario"));
         let resultados = await global.conexao.request().query(sqlQry);
-        resultados.recordset.forEach(function (item) {
+        resultados.recordset.forEach(function (item) {            
             pesoAntigo = item.peso;
+            pesoNovo = req.body.peso;
             altura = item.altura;
-            pontuacao = item.Pontuação;
+            pontuacao = item.Pontuação;            
         });
 
-        var difImcAntigo = pesoAntigo / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc antigo e o ideal
-        if(difImcAntigo < 0)
-            difImcAntigo = -difImcAntigo;
+        if(pesoAntigo != pesoNovo)
+        {
+            var difImcAntigo = pesoAntigo / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc antigo e o ideal
+            if(difImcAntigo < 0)
+                difImcAntigo = -difImcAntigo;
         
 
-        var difImcNovo = req.body.peso / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc novo e o ideal
-        if(difImcNovo < 0)
-            difImcNovo = -difImcNovo; 
-        if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
-            pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
-        else
-            pontuacao -= Math.round(difImcNovo*10); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
+            var difImcNovo = pesoNovo / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc novo e o ideal
+            if(difImcNovo < 0)
+                difImcNovo = -difImcNovo; 
+            if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
+                pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
+            else
+                pontuacao -= Math.round(difImcNovo*10); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
+        }
 
         execSQL('update Usuario set peso = ' + req.body.peso + ', Pontuação =' + pontuacao + 'where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
         res.redirect('avancos.html');
