@@ -59,6 +59,12 @@ class UsuarioDao{
         });
        
     }
+
+    selecionarPeloCodigo(codigo, callback){
+        this._db.query("select * from Usuario where codUsuario = " + codigo, function(err, recordset){
+            callback(err, recordset);
+        });
+    }
 }
 
 
