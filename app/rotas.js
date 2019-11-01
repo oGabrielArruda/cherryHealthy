@@ -108,17 +108,18 @@ module.exports = (app) => {
         var senha = req.body.senha;
         senha = criptografar(senha);
 
-        var sqlQry1 = "select * from Usuario where email = '" + email + "' ";
-        let resultados = await global.conexao.request().query(sqlQry1);
-        resultados.recordset.forEach(function (item) {
-            if (senha == item.senha) {
-                res.redirect('/welcome.html');
-                localStorage.setItem("codUsuario", item.codUsuario);
-                localStorage.setItem("codNutri", item.codNutricionista);
-            }
-            else {
-                res.redirect('/login.html');
-            }
+       var usuarioDao = new UsuarioDao(conexao);
+        await usuarioDao.selecionarPorEmail(email, function(erro, resultados){
+            resultados.recordset.forEach(function (item) {
+                if (senha == item.senha) {
+                    res.redirect('/welcome.html');
+                    localStorage.setItem("codUsuario", item.codUsuario);
+                    localStorage.setItem("codNutri", item.codNutricionista);
+                }
+                else {
+                    res.redirect('/login.html');
+                }
+            });
         });
     });
 

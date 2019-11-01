@@ -65,6 +65,12 @@ class UsuarioDao{
             callback(err, recordset);
         });
     }
+
+    selecionarPorEmail(email, callback){
+        this._db.query("select * from Usuario where email = '" + email + "'", function(err, recordset){
+            callback(err, recordset);
+        });
+    }
 }
 
 
