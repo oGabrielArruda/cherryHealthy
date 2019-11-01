@@ -124,8 +124,15 @@ module.exports = (app) => {
 
 
     app.get('/usuarioPerfil', (requisicao, resposta) => {
-        let filtro = ' WHERE codUsuario=' + parseInt(localStorage.getItem("codUsuario"));
-        execSQL('SELECT * from Usuario' + filtro, resposta);
+        let codigo =  parseInt(localStorage.getItem("codUsuario"));
+
+        var usuarioDao = new UsuarioDao(conexao);
+        usuarioDao.selecionarPeloCodigo(codigo, function(err, resultados){
+            if(err)
+                console.log("Erro ao pegar informações");
+            else
+                resposta.json(resultados.recordset);
+        });
     });
 
     app.get('/dieta', function (req, res) {
