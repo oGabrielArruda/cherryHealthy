@@ -164,12 +164,16 @@ module.exports = (app) => {
         
 
             var difImcNovo = pesoNovo / (altura*altura) - 21.7; // calcula-se o modulo da diferenca entre o imc novo e o ideal
+            
             if(difImcNovo < 0)
-                difImcNovo = -difImcNovo; 
+                difImcNovo = -difImcNovo;
+            if(difImcAntigo < 0)
+                difImcAntigo = -difImcAntigo;
+
             if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
-                pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
+                pontuacao += Math.round(difImcNovo*100); // adiciona-se a pontuação
             else
-                pontuacao -= Math.round(difImcNovo*10); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
+                pontuacao -= Math.round(difImcNovo*100); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
         }
 
         execSQL('update Usuario set peso = ' + req.body.peso + ', Pontuação =' + pontuacao + 'where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
