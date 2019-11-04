@@ -44,11 +44,7 @@ module.exports = (app) => {
 
     app.get('/signup.html', function (req, res) {
         res.sendFile('signup.html', { root: path.join(__dirname, '../paginas') });
-    });
-
-    app.get('/noticias.html', function (req, res) {
-        res.sendFile("noticias.html", { root: path.join(__dirname, '../paginas') });
-    });
+    });   
 
     // Páginas que necessitam estar logado para ter acesso, então verifica-se se há um login
     app.get('/welcome.html', function (req, res) {
@@ -172,9 +168,12 @@ module.exports = (app) => {
                 difImcAntigo = -difImcAntigo;
 
             if(difImcNovo < difImcAntigo) // se com a alteração, o usuario ficou mais proximo do imc ideal
-                pontuacao += Math.round(difImcNovo*100); // adiciona-se a pontuação
+                pontuacao += Math.round(difImcNovo*10); // adiciona-se a pontuação
             else
-                pontuacao -= Math.round(difImcNovo*100); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
+                pontuacao -= Math.round(difImcNovo*10); // se com a alteração, o usuário ficou mais longe do imc ideal, tira-se pontos
+
+            if(pontuacao < 0)
+            	pontuacao = 0;
         }
 
         execSQL('update Usuario set peso = ' + req.body.peso + ', Pontuação =' + pontuacao + 'where codUsuario = ' + parseInt(localStorage.getItem("codUsuario")), res);
