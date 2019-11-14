@@ -12,6 +12,7 @@ function fMascEx() {
     obj.value=masc(obj.value)
 }
 
+
 function mTel(tel) {
     tel=tel.replace(/\D/g,"")
     tel=tel.replace(/^(\d)/,"($1")
