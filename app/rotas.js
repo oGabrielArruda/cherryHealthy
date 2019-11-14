@@ -106,6 +106,10 @@ module.exports = (app) => {
 
        var usuarioDao = new UsuarioDao(conexao);
         await usuarioDao.selecionarPorEmail(email, function(erro, resultados){
+            if(resultados.recordset.length == 0){
+                res.redirect('/login.html');
+            }
+
             resultados.recordset.forEach(function (item) {
                 if (senha == item.senha) {
                     res.redirect('/welcome.html');
