@@ -86,15 +86,19 @@ module.exports = (app) => {
 
     // ROTAS NO BANCO DE DADOS
     app.post('/cadastro', function (req, res) {
-        const usuarioDao = new UsuarioDao(conexao);    
+        const usuarioDao = new UsuarioDao(conexao);
+        var err = false;        
         usuarioDao.adiciona(req.body, function(erro){
             if(erro)
             {
-                res.redirect("/signup.html");
+                console.log("Erro na inclusão");
+                err = true;
             }
-            else
-                res.redirect("/login.html");
         });
+        if(!err)
+            res.redirect('/login.html');
+        else
+            res.redirecc('/signup.html');
     });
 
     app.post('/login', async function (req, res) {
