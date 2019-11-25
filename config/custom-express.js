@@ -21,4 +21,12 @@ app.use(bodyParser.json());
 
 rotas(app);
 
+// Tratamento de erros
+app.use(function (req, resp, next) {
+    return resp.status(404).render('paginas/erro/notFound');
+});
+    app.use(function (erro, req, resp, next) {
+    return resp.status(500).send('Página não encontrada!');
+});
+
 module.exports = app;
