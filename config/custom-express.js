@@ -21,5 +21,4 @@ app.use(bodyParser.json());
 
 rotas(app);
 
-
 module.exports = app;
